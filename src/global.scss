@@ -26,6 +26,38 @@
 @import "@ionic/angular/css/flex-utils.css";
 
 /**
+ * Modern Typography
+ * -----------------------------------------------------
+ */
+* {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+h1 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin-bottom: 0.875rem;
+}
+
+p {
+  line-height: 1.6;
+  color: var(--ion-color-medium);
+  margin-bottom: 1rem;
+}
+
+/**
  * Ionic Dark Mode
  * -----------------------------------------------------
  * For more info, please see:
@@ -35,3 +67,151 @@
 /* @import "@ionic/angular/css/palettes/dark.always.css"; */
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
 @import "@ionic/angular/css/palettes/dark.system.css";
+
+/**
+ * Modern Card Styles
+ * -----------------------------------------------------
+ */
+ion-card {
+  border-radius: 16px;
+  box-shadow: var(--ion-card-shadow);
+  border: 1px solid var(--ion-border-color);
+  margin: 16px;
+}
+
+ion-card-header {
+  padding: 20px;
+}
+
+ion-card-content {
+  padding: 20px;
+}
+
+/**
+ * Enhanced Buttons
+ * -----------------------------------------------------
+ */
+ion-button {
+  --border-radius: 12px;
+  --box-shadow: var(--ion-button-shadow);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: none;
+  height: 48px;
+  font-size: 1rem;
+}
+
+ion-button::part(native) {
+  transition: all 0.2s ease;
+}
+
+ion-button:hover::part(native) {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.15), 0 2px 4px -1px rgba(0, 0, 0, 0.1);
+}
+
+ion-button:active::part(native) {
+  transform: translateY(0);
+}
+
+/**
+ * Modern Toolbar
+ * -----------------------------------------------------
+ */
+ion-toolbar {
+  --padding-top: 8px;
+  --padding-bottom: 8px;
+  --min-height: 64px;
+  border-bottom: 1px solid var(--ion-border-color);
+}
+
+ion-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+/**
+ * Enhanced Items
+ * -----------------------------------------------------
+ */
+ion-item {
+  --padding-start: 20px;
+  --padding-end: 20px;
+  --inner-padding-end: 0;
+  --border-radius: 12px;
+  --background: var(--ion-item-background);
+  margin-bottom: 12px;
+  border: 1px solid var(--ion-border-color);
+}
+
+ion-label {
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: var(--ion-text-color);
+}
+
+ion-select {
+  --placeholder-color: var(--ion-color-medium);
+  font-size: 1rem;
+}
+
+/**
+ * Content Spacing
+ * -----------------------------------------------------
+ */
+ion-content {
+  --padding-start: 20px;
+  --padding-end: 20px;
+  --padding-top: 20px;
+  --padding-bottom: 20px;
+}
+
+/**
+ * Modern Select
+ * -----------------------------------------------------
+ */
+ion-select::part(container) {
+  border-radius: 8px;
+}
+
+ion-select::part(icon) {
+  color: var(--ion-color-primary);
+}
+
+/**
+ * Animations
+ * -----------------------------------------------------
+ */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.3s ease-out;
+}
+
+/**
+ * Utility Classes
+ * -----------------------------------------------------
+ */
+.text-gradient {
+  background: linear-gradient(135deg, var(--ion-color-primary) 0%, var(--ion-color-secondary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.glass-effect {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}

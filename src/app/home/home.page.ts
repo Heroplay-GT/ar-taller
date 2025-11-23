@@ -1,33 +1,55 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
+interface MarkerOption {
+  id: string;
+  label: string;
+  type: 'preset' | 'pattern';
+  value: string;
+}
+
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
-  standalone: false
+  standalone: false,
 })
 export class HomePage {
 
-  markers = [
+  markers: MarkerOption[] = [
     {
-      name: 'Marker Hiro (por defecto)',
-      url: 'assets/markers/hiro.patt'
+      id: 'hiro',
+      label: 'Marker Hiro (preset)',
+      type: 'preset',
+      value: 'hiro',
     },
-    // Ejemplo de segundo marker (no agregado al proyecto)
-    // {
-    //   name: 'Marker Kanji',
-    //   url: 'assets/markers/kanji.patt'
-    // }
+    {
+      id: 'kanji',
+      label: 'Marker Kanji (preset)',
+      type: 'preset',
+      value: 'kanji',
+    },
+    {
+      id: 'nvidia',
+      label: 'Marker NVIDIA (custom)',
+      type: 'pattern',
+      value: 'assets/markers/pattern-Logo-NVIDIA.patt',
+    },
   ];
 
-  selectedMarkerUrl = this.markers[0].url;
+  selectedMarkerId = this.markers[0].id;
 
   constructor(private router: Router) {}
 
   goToAR() {
+    const marker = this.markers.find(m => m.id === this.selectedMarkerId);
+    if (!marker) return;
+
     this.router.navigate(['/ar'], {
-      queryParams: { marker: this.selectedMarkerUrl }
+      queryParams: {
+        type: marker.type,
+        value: marker.value,
+      },
     });
   }
 }

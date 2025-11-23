@@ -1,13 +1,45 @@
-<ion-content fullscreen>
-  <a-scene
-    vr-mode-ui="enabled: false"
-    embedded
-    arjs="sourceType: webcam; debugUIEnabled: true;"
-  >
-    <a-marker preset="hiro">
-      <a-box position="0 0.5 0" material="color: red;"></a-box>
-    </a-marker>
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home" text="Volver"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Vista AR</ion-title>
+  </ion-toolbar>
+</ion-header>
 
-    <a-entity camera></a-entity>
-  </a-scene>
+<!-- Remove fullscreen attribute and add specific class for better control -->
+<ion-content class="ar-content">
+  <div class="ar-container">
+    <!-- Add style attribute to ensure embedded mode uses full viewport -->
+    <a-scene
+      vr-mode-ui="enabled: false"
+      embedded
+      arjs="sourceType: webcam; debugUIEnabled: false; videoTexture: true;"
+      style="width: 100vw; height: 100vh; position: absolute; top: 0; left: 0;"
+    >
+      <a-marker
+        *ngIf="markerType === 'preset'"
+        [attr.preset]="markerValue"
+      >
+        <a-box position="0 0.5 0" material="color: #4F46E5;"></a-box>
+      </a-marker>
+
+      <a-marker
+        *ngIf="markerType === 'pattern'"
+        type="pattern"
+        [attr.url]="markerValue"
+      >
+        <a-box position="0 0.5 0" material="color: #4F46E5;"></a-box>
+      </a-marker>
+
+      <a-entity camera></a-entity>
+    </a-scene>
+  </div>
+
+  <div class="ar-overlay">
+    <div class="ar-hint">
+      <ion-icon name="scan-outline"></ion-icon>
+      <p>Apunta la cámara hacia el marcador</p>
+    </div>
+  </div>
 </ion-content>
