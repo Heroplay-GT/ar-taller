@@ -7,30 +7,82 @@
   </ion-toolbar>
 </ion-header>
 
-<!-- Remove fullscreen attribute and add specific class for better control -->
 <ion-content class="ar-content">
   <div class="ar-container">
-    <!-- Add style attribute to ensure embedded mode uses full viewport -->
+    <!-- Reverted to preset markers (hiro, kanji) for compatibility with existing physical markers -->
     <a-scene
+      id="arScene"
       vr-mode-ui="enabled: false"
       embedded
-      arjs="sourceType: webcam; debugUIEnabled: true;"
-      style="width: 100vw; height: 100vh; position: absolute; top: 0; left: 0;"
+      arjs="sourceType: webcam; debugUIEnabled: false; detectionMode: mono_and_matrix; maxDetectionRate: 60;"
+      renderer="logarithmicDepthBuffer: true; precision: medium;"
     >
-
-      <a-marker
-        *ngIf="markerType === 'preset'"
-        [attr.preset]="markerValue"
-      >
-        <a-box position="0 0.5 0" material="color: #4F46E5;"></a-box>
+      <!-- Hiro marker - Blue circle -->
+      <a-marker preset="hiro" id="marker-hiro">
+        <a-circle
+          position="0 0 0"
+          rotation="-90 0 0"
+          radius="0.5"
+          color="#4F46E5">
+        </a-circle>
       </a-marker>
 
-      <a-marker
-        *ngIf="markerType === 'pattern'"
-        type="pattern"
-        [attr.url]="markerValue"
-      >
-        <a-box position="0 0.5 0" material="color: #4F46E5;"></a-box>
+      <!-- Kanji marker - Cyan square -->
+      <a-marker preset="kanji" id="marker-kanji">
+        <a-plane
+          position="0 0 0"
+          rotation="-90 0 0"
+          width="1"
+          height="1"
+          color="#06B6D4">
+        </a-plane>
+      </a-marker>
+
+      <!-- Letter A marker - Green triangle -->
+      <a-marker preset="letterA" id="marker-letterA">
+        <a-triangle
+          position="0 0 0"
+          rotation="-90 0 0"
+          vertex-a="0 0.5 0"
+          vertex-b="-0.5 -0.5 0"
+          vertex-c="0.5 -0.5 0"
+          color="#76B900">
+        </a-triangle>
+      </a-marker>
+
+      <!-- Letter B marker - Red hexagon -->
+      <a-marker preset="letterB" id="marker-letterB">
+        <a-ring
+          position="0 0 0"
+          rotation="-90 0 0"
+          radius-inner="0.2"
+          radius-outer="0.5"
+          segments-theta="6"
+          color="#EF4444">
+        </a-ring>
+      </a-marker>
+
+      <!-- Letter C marker - Purple torus -->
+      <a-marker preset="letterC" id="marker-letterC">
+        <a-torus
+          position="0 0 0"
+          rotation="-90 0 0"
+          radius="0.4"
+          radius-tubular="0.1"
+          color="#A855F7">
+        </a-torus>
+      </a-marker>
+
+      <!-- Letter D marker - Orange octagon -->
+      <a-marker preset="letterD" id="marker-letterD">
+        <a-ring
+          position="0 0 0"
+          rotation="-90 0 0"
+          radius-inner="0.15"
+          radius-outer="0.5"
+          segments-theta="8"
+          color="#F97316">
+        </a-ring>
       </a-marker>
 
       <a-entity camera></a-entity>
@@ -40,7 +92,8 @@
   <div class="ar-overlay">
     <div class="ar-hint">
       <ion-icon name="scan-outline"></ion-icon>
-      <p>Apunta la cámara hacia el marcador</p>
+      <p>Apunta la cámara hacia los marcadores</p>
+      <p class="hint-small">Detecta múltiples marcadores a la vez</p>
     </div>
   </div>
 </ion-content>

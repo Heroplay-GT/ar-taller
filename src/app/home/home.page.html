@@ -7,50 +7,18 @@
 </ion-header>
 
 <ion-content class="ion-padding">
-  <!-- Modernized layout with card-based design and improved visual hierarchy -->
   <div class="welcome-section fade-in">
     <h1>Realidad Aumentada</h1>
     <p class="subtitle">
-      Experimenta contenido 3D en tu entorno real utilizando tecnología AR.js
+      Experimenta contenido 3D en tu entorno real con detección múltiple de marcadores
     </p>
   </div>
 
-  <ion-card class="fade-in">
-    <ion-card-header>
-      <ion-card-title>Selecciona un Marcador</ion-card-title>
-      <ion-card-subtitle>Elige el target para la experiencia AR</ion-card-subtitle>
-    </ion-card-header>
-
-    <ion-card-content>
-      <ion-item lines="none">
-        <ion-label position="stacked">Target AR</ion-label>
-        <ion-select
-          [(ngModel)]="selectedMarkerId"
-          interface="popover"
-          placeholder="Selecciona un marcador"
-        >
-          <ion-select-option
-            *ngFor="let marker of markers"
-            [value]="marker.id"
-          >
-            {{ marker.label }}
-          </ion-select-option>
-        </ion-select>
-      </ion-item>
-    </ion-card-content>
-  </ion-card>
+  <!-- Removed marker selection card - now goes directly to multi-marker detection -->
 
   <div class="instructions-card fade-in">
     <div class="instruction-item">
       <div class="step-number">1</div>
-      <div class="step-content">
-        <h3>Selecciona</h3>
-        <p>Elige un marcador de la lista</p>
-      </div>
-    </div>
-
-    <div class="instruction-item">
-      <div class="step-number">2</div>
       <div class="step-content">
         <h3>Inicia</h3>
         <p>Presiona el botón para activar AR</p>
@@ -58,10 +26,18 @@
     </div>
 
     <div class="instruction-item">
-      <div class="step-number">3</div>
+      <div class="step-number">2</div>
       <div class="step-content">
         <h3>Apunta</h3>
-        <p>Enfoca la cámara hacia el marcador</p>
+        <p>Enfoca la cámara hacia marcadores Hiro, Kanji o LetterA-D</p>
+      </div>
+    </div>
+
+    <div class="instruction-item">
+      <div class="step-number">3</div>
+      <div class="step-content">
+        <h3>Descubre</h3>
+        <p>Cada marcador diferente mostrará su forma única con colores distintos</p>
       </div>
     </div>
   </div>
