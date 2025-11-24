@@ -137,7 +137,7 @@ Abrir Android Studio → Run on device.
 
 ## 📁 **Repositorio GitHub**
 
-👉 *(agrega el link a tu repositorio aquí)*
+👉 https://github.com/Heroplay-GT/Ar-taller
 
 ---
 
@@ -152,6 +152,8 @@ Abrir Android Studio → Run on device.
 | Entrega de video demostración | ✔️                                             |
 | AR en dispositivo real        | ✔️                                             |
 | Detección y renderizado 3D    | ✔️                                             |
+| ususarios en firebase         | ✔️                                             |
+| supabase reder de imgs        | ✔️                                             |
 
 ---
 
