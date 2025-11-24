@@ -14,9 +14,10 @@
     <a-scene
       vr-mode-ui="enabled: false"
       embedded
-      arjs="sourceType: webcam; debugUIEnabled: false; videoTexture: true;"
+      arjs="sourceType: webcam; debugUIEnabled: true;"
       style="width: 100vw; height: 100vh; position: absolute; top: 0; left: 0;"
     >
+
       <a-marker
         *ngIf="markerType === 'preset'"
         [attr.preset]="markerValue"
