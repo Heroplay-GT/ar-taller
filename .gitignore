@@ -68,3 +68,9 @@ testem.log
 # System files
 .DS_Store
 Thumbs.db
+
+# Ignorar todos los archivos de environments dentro de src
+src/environments/*
+
+# Pero NO ignorar el archivo de ejemplo
+!src/environments/environment.example.ts
