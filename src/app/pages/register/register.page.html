@@ -1,0 +1,70 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/login"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Registro</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div class="register-container">
+    <div class="logo-container">
+      <ion-icon name="person-add" class="logo-icon"></ion-icon>
+      <h1>Crear Cuenta</h1>
+      <p>Comienza tu experiencia AR</p>
+    </div>
+
+    <form (ngSubmit)="onRegister()">
+      <ion-item lines="full">
+        <ion-label position="floating">Correo electrónico</ion-label>
+        <ion-input
+          type="email"
+          [(ngModel)]="email"
+          name="email"
+          required
+          autocomplete="email"
+        ></ion-input>
+      </ion-item>
+
+      <ion-item lines="full">
+        <ion-label position="floating">Contraseña</ion-label>
+        <ion-input
+          type="password"
+          [(ngModel)]="password"
+          name="password"
+          required
+          autocomplete="new-password"
+        ></ion-input>
+      </ion-item>
+
+      <ion-item lines="full">
+        <ion-label position="floating">Confirmar Contraseña</ion-label>
+        <ion-input
+          type="password"
+          [(ngModel)]="confirmPassword"
+          name="confirmPassword"
+          required
+          autocomplete="new-password"
+        ></ion-input>
+      </ion-item>
+
+      <ion-button
+        expand="block"
+        type="submit"
+        class="ion-margin-top"
+        [disabled]="loading"
+      >
+        <ion-spinner *ngIf="loading" name="crescent"></ion-spinner>
+        <span *ngIf="!loading">Crear Cuenta</span>
+      </ion-button>
+    </form>
+
+    <div class="login-link">
+      <p>
+        ¿Ya tienes cuenta?
+        <a routerLink="/login">Inicia sesión aquí</a>
+      </p>
+    </div>
+  </div>
+</ion-content>
