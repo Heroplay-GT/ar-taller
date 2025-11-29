@@ -1,0 +1,83 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>🎨 Configurar Marcadores</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="resetConfigurations()">
+        <ion-icon name="refresh-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="config-container">
+    
+    <!-- Lista de marcadores configurables -->
+    <ion-list>
+      <ion-list-header>
+        <ion-label>
+          <h2>Mis Marcadores</h2>
+          <p>Personaliza qué ver en cada marcador AR</p>
+        </ion-label>
+      </ion-list-header>
+
+      <ion-item *ngFor="let marker of markers" [class.disabled]="!marker.enabled">
+        <ion-thumbnail slot="start" class="marker-preview">
+          <div class="preview-shape" [style.background-color]="marker.content.color">
+            <ion-icon *ngIf="marker.content.type === 'shape'" name="cube-outline"></ion-icon>
+            <ion-icon *ngIf="marker.content.type === 'image'" name="image-outline"></ion-icon>
+          </div>
+        </ion-thumbnail>
+
+        <ion-label>
+          <h3>{{ marker.markerName }}</h3>
+          <p *ngIf="marker.content.type === 'shape'">
+            Forma: {{ marker.content.shape }} - {{ marker.content.text }}
+          </p>
+          <p *ngIf="marker.content.type === 'image'">
+            Imagen personalizada
+          </p>
+        </ion-label>
+
+        <ion-toggle 
+          slot="end" 
+          [(ngModel)]="marker.enabled" 
+          (ionChange)="toggleMarker(marker.markerId)"
+        ></ion-toggle>
+
+        <ion-button 
+          slot="end" 
+          fill="clear" 
+          (click)="editMarker(marker)"
+        >
+          <ion-icon name="create-outline"></ion-icon>
+        </ion-button>
+      </ion-item>
+    </ion-list>
+
+    <!-- Botón para agregar marcador personalizado -->
+    <ion-button 
+      expand="block" 
+      class="add-marker-btn"
+      (click)="addCustomMarker()"
+    >
+      <ion-icon name="add-circle-outline" slot="start"></ion-icon>
+      Agregar Marcador Personalizado
+    </ion-button>
+
+    <!-- Botón para ir a AR -->
+    <ion-button 
+      expand="block" 
+      color="success"
+      class="test-ar-btn"
+      routerLink="/ar"
+    >
+      <ion-icon name="camera-outline" slot="start"></ion-icon>
+      Probar en AR
+    </ion-button>
+
+  </div>
+</ion-content>

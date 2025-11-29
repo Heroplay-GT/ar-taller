@@ -25,7 +25,11 @@ const routes: Routes = [
   {
     path: "register",
     loadChildren: () => import("./pages/register/register.module").then((m) => m.RegisterPageModule),
+  },  {
+    path: 'marker-config',
+    loadChildren: () => import('./pages/marker-config/marker-config.module').then( m => m.MarkerConfigPageModule)
   },
+
 ]
 
 @NgModule({

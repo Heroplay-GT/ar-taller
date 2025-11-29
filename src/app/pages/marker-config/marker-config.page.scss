@@ -1,0 +1,69 @@
+.config-container {
+  padding: 16px;
+}
+
+ion-list {
+  margin-bottom: 20px;
+}
+
+ion-list-header {
+  margin-bottom: 10px;
+
+  h2 {
+    font-weight: 600;
+    font-size: 1.2em;
+  }
+
+  p {
+    color: var(--ion-color-medium);
+    font-size: 0.9em;
+  }
+}
+
+ion-item {
+  --padding-start: 10px;
+  margin-bottom: 8px;
+  border-radius: 8px;
+
+  &.disabled {
+    opacity: 0.5;
+  }
+}
+
+.marker-preview {
+  --size: 60px;
+  width: var(--size);
+  height: var(--size);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.preview-shape {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  ion-icon {
+    font-size: 30px;
+    color: white;
+  }
+}
+
+.add-marker-btn {
+  margin: 20px 0;
+}
+
+.test-ar-btn {
+  margin-top: 10px;
+  font-weight: 600;
+}
+
+ion-thumbnail {
+  --border-radius: 8px;
+}
+
+ion-button[slot="end"] {
+  margin-left: 8px;
+}

@@ -1,4 +1,5 @@
 import { Component, type OnInit } from "@angular/core"
+import { MarkerConfigService } from '../../core/services/marker-config.service'
 
 @Component({
   selector: "app-ar",
@@ -7,11 +8,26 @@ import { Component, type OnInit } from "@angular/core"
   standalone: false,
 })
 export class ArPage implements OnInit {
-  constructor() {}
+  constructor(private markerConfigService: MarkerConfigService) {}
 
-  ngOnInit() {
-    console.log("AR Page initialized - Multi-marker detection active")
-    console.log("Detecting: Hiro, Kanji, Letter markers, and NVIDIA markers simultaneously")
+  async ngOnInit() {
+    console.log("AR Page initialized - Dynamic marker loading active")
+    await this.syncConfigurationsToLocalStorage()
+  }
+
+  async ionViewWillEnter() {
+    // Sincronizar cada vez que entramos a la página
+    await this.syncConfigurationsToLocalStorage()
+  }
+
+  async syncConfigurationsToLocalStorage() {
+    try {
+      const configurations = await this.markerConfigService.getConfigurations()
+      localStorage.setItem('marker_configurations', JSON.stringify(configurations))
+      console.log('✅ Configuraciones sincronizadas:', configurations.length, 'marcadores')
+    } catch (error) {
+      console.error('Error sincronizando configuraciones:', error)
+    }
   }
 }
 
