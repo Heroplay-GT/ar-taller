@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core"
 import { createClient, type SupabaseClient } from "@supabase/supabase-js"
-import { environment } from "../../../environments/environment"
+import { environment } from "../../../environments/environment.example"
 import { AuthService } from "./auth.service"
 
 @Injectable({

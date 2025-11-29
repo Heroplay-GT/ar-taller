@@ -11,7 +11,7 @@ export class ArPage implements OnInit {
 
   ngOnInit() {
     console.log("AR Page initialized - Multi-marker detection active")
-    console.log("Detecting: Hiro, Kanji, and NVIDIA markers simultaneously")
+    console.log("Detecting: Hiro, Kanji, Letter markers, and NVIDIA markers simultaneously")
   }
 }
 
